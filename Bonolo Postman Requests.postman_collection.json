@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "1fc22993-88cf-431f-864b-ad9f97439b46",
+		"name": "Bonolo Postman Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Translation Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"translateData\":\"whatever fight a cat you want so rought trousers the helm has inbetween somthing has and also has a cat soldier white whit white soldier\",\n    \"mode\":0\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/translate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"translate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Word Ranking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"translateData\":\"whatever fight a cat you want so rought trousers the helm has inbetween somthing has and also has a cat soldier white white white soldier\",\n    \"mode\":1\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ranking",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ranking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
