@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 @Service
 public class TranslateServices {
 
-
     private LoadDictionary loadDictionary;
     public TranslateServices() {
     }
@@ -22,18 +21,22 @@ public class TranslateServices {
 
     public String getTranslation(TranslateRequestDto translateRequestDto){
 
+        String translatedData;
         switch(translateRequestDto.getMode()){
             case MODE1:
                 ModeOneImplementation modeOneObj = new ModeOneImplementation();
-                return modeOneObj
+                translatedData = modeOneObj
                         .translator(translateRequestDto.getTranslateData(),this.loadDictionary.getDictionary());
+                break;
             case MODE2:
                 ModeTwoImplementation modeTwoObj = new ModeTwoImplementation();
-                return modeTwoObj
+                translatedData =  modeTwoObj
                         .translator(translateRequestDto.getTranslateData(),this.loadDictionary.getDictionary());
+                break;
             default:
-                throw new RuntimeException("Invalid mode");
+                throw new RuntimeException("Error: Invalid mode");
         }
+        return translatedData;
     }
 
     public Map<String,Integer> getWordRankings(String data){
@@ -57,13 +60,13 @@ public class TranslateServices {
 
         }
 
-        Map<String, Integer> translatedOredered = new LinkedHashMap<>();
+        Map<String, Integer> translatedOrdered = new LinkedHashMap<>();
 
         translatedWordRanks.entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                .forEachOrdered(x -> translatedOredered.put(x.getKey(), x.getValue()));
+                .forEachOrdered(x -> translatedOrdered.put(x.getKey(), x.getValue()));
 
 
-        return translatedOredered;
+        return translatedOrdered;
     }
 }
